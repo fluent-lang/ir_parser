@@ -23,7 +23,6 @@
 #include <optional>
 #include <vector>
 
-#include "../lexer/lexer.h"
 #include "rule/binary/binary.h"
 #include "rule/block/block.h"
 #include "rule/expr/expr.h"
@@ -41,11 +40,8 @@
 
 namespace fluent::parser
 {
-    inline std::shared_ptr<AST> parse_code(const std::string &code)
+    inline std::shared_ptr<AST> parse_code(token::TokenStream *stream)
     {
-        // Tokenize the code
-        token::TokenStream stream = lexer::tokenize(code);
-        
         // Create a new AST node
         const auto ast = std::make_shared<AST>();
         ast->rule = Program;
@@ -57,7 +53,7 @@ namespace fluent::parser
         std::optional<std::shared_ptr<AST>> pivot_fn = std::nullopt;
 
         // Iterate over the tokens
-        std::optional<token::Token> current_opt = stream.nth(0);
+        std::optional<token::Token> current_opt = stream->nth(0);
         while (current_opt.has_value())
         {
             // Get the current token
@@ -69,21 +65,21 @@ namespace fluent::parser
                 case token::Block:
                 {
                     util::assert(pivot_fn.has_value(), true);
-                    parse_block(blocks, &stream, pivot_fn.value());
+                    parse_block(blocks, stream, pivot_fn.value());
                     pivot = blocks[blocks.size() - 1];
                     break;
                 }
 
                 case token::Function:
                 {
-                    pivot_fn = parse_function(blocks, &stream, ast);
+                    pivot_fn = parse_function(blocks, stream, ast);
                     pivot = blocks[blocks.size() - 1];
                     break;
                 }
 
                 case token::Module:
                 {
-                    parse_mod(blocks, &stream, ast);
+                    parse_mod(blocks, stream, ast);
                     break;
                 }
 
@@ -110,14 +106,14 @@ namespace fluent::parser
 
                 case token::Link:
                 {
-                    parse_link(blocks, &stream, ast);
+                    parse_link(blocks, stream, ast);
                     break;
                 }
 
                 case token::Reference:
                 {
                     // Parse the reference
-                    parse_reference(blocks, &stream, ast);
+                    parse_reference(blocks, stream, ast);
                     break;
                 }
 
@@ -125,61 +121,61 @@ namespace fluent::parser
                 case token::Ret:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_ret(blocks, &stream, pivot.value());
+                    parse_ret(blocks, stream, pivot.value());
                     break;
                 }
 
                 case token::Alloca:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_var(&stream, pivot.value(), Alloca, true, false);
+                    parse_var(stream, pivot.value(), Alloca, true, false);
                     break;
                 }
 
                 case token::Mov:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_var(&stream, pivot.value(), Mov, true, true);
+                    parse_var(stream, pivot.value(), Mov, true, true);
                     break;
                 }
 
                 case token::Store:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_var(&stream, pivot.value(), Store, false, true);
+                    parse_var(stream, pivot.value(), Store, false, true);
                     break;
                 }
 
                 case token::Jump:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_singly_opt(&stream, pivot.value(), Jump);
+                    parse_singly_opt(stream, pivot.value(), Jump);
                     break;
                 }
 
                 case token::If:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_if(&stream, pivot.value());
+                    parse_if(stream, pivot.value());
                     break;
                 }
 
                 case token::Pick:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_pick(&stream, pivot.value());
+                    parse_pick(stream, pivot.value());
                     break;
                 }
 
                 default:
                 {
                     util::assert(pivot.has_value(), true);
-                    parse_expr(&stream, pivot.value(), "default");
+                    parse_expr(stream, pivot.value(), "default");
                 }
             }
 
             // Move to the next token
-            current_opt = stream.next();
+            current_opt = stream->next();
         }
 
         // Convert the AST to a FileCode

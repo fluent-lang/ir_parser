@@ -28,9 +28,9 @@
 namespace fluent::parser
 {
     inline void parse_block(
-        std::vector<std::shared_ptr<parser::AST>> &blocks,
+        std::vector<std::shared_ptr<AST>> &blocks,
         token::TokenStream *tokens,
-        const std::shared_ptr<parser::AST> &ast
+        const std::shared_ptr<AST> &ast
     )
     {
         // Make sure we have a block
