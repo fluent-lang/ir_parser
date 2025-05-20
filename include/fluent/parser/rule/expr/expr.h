@@ -29,7 +29,7 @@
 #include "../../../lexer/token.h"
 #include "../../ast/ast.h"
 
-namespace parser::expr
+namespace fluent::parser::expr
 {
     inline void parse_single_token(
         const token::Token &current,
@@ -48,7 +48,7 @@ namespace parser::expr
     }
 }
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_expr(
         token::TokenStream *tokens,

@@ -26,7 +26,7 @@
 #include "../../../util/unwrap.h"
 #include "../identifier/identifier.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_ranged_op(
         token::TokenStream *tokens,

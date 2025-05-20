@@ -24,7 +24,7 @@
 #include "../../../lexer/token.h"
 #include "../identifier/identifier.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_arithmetic_op(
     token::TokenStream *tokens,

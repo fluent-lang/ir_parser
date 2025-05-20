@@ -37,7 +37,7 @@
 #include "../util/assert.h"
 #include "ast/ast.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline std::shared_ptr<AST> parse_code(token::TokenStream *stream)
     {

@@ -24,7 +24,7 @@
 #include <fluent/string_builder/library.h>
 #include <string>
 
-namespace lexer
+namespace fluent::lexer
 {
     // Define the token map
     inline ankerl::unordered_dense::segmented_map<std::string_view, token::TokenType> token_map =

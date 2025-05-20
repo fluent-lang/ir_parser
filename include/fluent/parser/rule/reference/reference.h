@@ -26,7 +26,7 @@
 #include "../../ast/ast.h"
 #include "../../../lexer/token.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_reference(
         const std::vector<std::shared_ptr<AST>> &blocks,

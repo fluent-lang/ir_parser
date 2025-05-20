@@ -22,7 +22,7 @@
 #include <optional>
 #include <stdexcept>
 
-namespace util
+namespace fluent::util
 {
     template <typename T>
     T try_unwrap(std::optional<T> opt)

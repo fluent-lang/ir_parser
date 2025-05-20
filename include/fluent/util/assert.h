@@ -20,7 +20,7 @@
 #define ASSERT_H
 #include <stdexcept>
 
-namespace util
+namespace fluent::util
 {
     template <typename T>
     void assert(T a, T b)

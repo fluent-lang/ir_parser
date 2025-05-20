@@ -24,7 +24,7 @@
 #include "../../../lexer/token.h"
 #include "../binary/binary.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_pick(
         token::TokenStream *tokens,

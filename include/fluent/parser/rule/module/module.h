@@ -27,7 +27,7 @@
 #include "../identifier/identifier.h"
 #include "../type/type.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_mod(
     const std::vector<std::shared_ptr<AST>> &blocks,

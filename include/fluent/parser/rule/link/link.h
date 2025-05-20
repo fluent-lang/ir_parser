@@ -26,7 +26,7 @@
 #include "../../../util/unwrap.h"
 #include "../../ast/ast.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_link(
         const std::vector<std::shared_ptr<AST>> &blocks,

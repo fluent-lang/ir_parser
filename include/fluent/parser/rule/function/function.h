@@ -28,7 +28,7 @@
 #include "../identifier/identifier.h"
 #include "../type/type.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline std::shared_ptr<AST> parse_function(
         std::vector<std::shared_ptr<AST>> &blocks,

@@ -24,7 +24,7 @@
 #include <vector>
 #include "../structure/immut_str/immut_str.h"
 
-namespace token
+namespace fluent::token
 {
     typedef enum
     {

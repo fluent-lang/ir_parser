@@ -24,7 +24,7 @@
 #include "../../../util/unwrap.h"
 #include "../../ast/ast.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_type(
         token::TokenStream *tokens,

@@ -27,7 +27,7 @@
 #include "../../../util/assert.h"
 #include "../expr/expr.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_ret(
         const std::vector<std::shared_ptr<parser::AST>> &blocks,

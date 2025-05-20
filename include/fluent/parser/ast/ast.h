@@ -24,7 +24,7 @@
 #include <vector>
 #include "../../structure/immut_str/immut_str.h"
 
-namespace parser
+namespace fluent::parser
 {
     typedef enum {
         Program = 0, // 0

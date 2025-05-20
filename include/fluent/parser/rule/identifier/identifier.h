@@ -26,7 +26,7 @@
 #include "../../../util/unwrap.h"
 #include "../../ast/ast.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline std::shared_ptr<AST> parse_identifier_cur(token::TokenStream *tokens)
     {

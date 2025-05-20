@@ -23,7 +23,7 @@
 #include "../../ast/ast.h"
 #include "../identifier/identifier.h"
 
-namespace parser
+namespace fluent::parser
 {
     inline void parse_if(
         token::TokenStream *tokens,
