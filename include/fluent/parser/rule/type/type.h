@@ -24,7 +24,8 @@
 #include "../../../util/unwrap.h"
 #include "../../ast/ast.h"
 
-namespace parser {
+namespace parser
+{
     inline void parse_type(
         token::TokenStream *tokens,
         const std::shared_ptr<AST> &ast
