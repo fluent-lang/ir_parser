@@ -37,7 +37,7 @@ namespace fluent::parser
     )
     {
         // Ensure we don't have any blocks
-        util::assert(blocks.empty(), true);
+        util::assert_eq(blocks.empty(), true);
 
         // Create a new function node
         const auto fn = std::make_shared<AST>();

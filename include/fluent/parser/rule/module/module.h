@@ -36,7 +36,7 @@ namespace fluent::parser
 )
     {
         // Ensure we don't have any blocks
-        util::assert(blocks.empty(), true);
+        util::assert_eq(blocks.empty(), true);
 
         // Create a new module node
         const auto mod = std::make_shared<AST>();

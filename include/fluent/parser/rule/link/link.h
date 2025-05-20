@@ -35,11 +35,11 @@ namespace fluent::parser
     )
     {
         // Ensure we don't have any blocks
-        util::assert(blocks.empty(), true);
+        util::assert_eq(blocks.empty(), true);
 
         // Peek to the next token
         const auto token = util::try_unwrap(tokens->next());
-        util::assert(token.type, token::StringLiteral);
+        util::assert_eq(token.type, token::StringLiteral);
 
         // Create a new literal node
         const auto literal = create_node(StringLiteral);

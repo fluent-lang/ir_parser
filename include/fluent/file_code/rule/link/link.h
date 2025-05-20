@@ -26,7 +26,7 @@ namespace fluent::file_code
     {
         // Get the link's children
         const auto children = util::try_unwrap(ast->children);
-        util::assert(children.empty(), false);
+        util::assert_eq(children.empty(), false);
 
         // Get the first child
         const auto& literal = children[0];

@@ -48,7 +48,7 @@ namespace fluent::parser
         {
             // Get the next token
             const auto token = util::try_unwrap(tokens->next());
-            util::assert(token.type, token::NumLiteral);
+            util::assert_eq(token.type, token::NumLiteral);
 
             // Create a new number literal node
             const auto literal = std::make_shared<AST>();

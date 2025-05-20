@@ -35,7 +35,7 @@ namespace fluent::parser
     )
     {
         // Make sure we don't have any blocks
-        util::assert(blocks.empty(), true);
+        util::assert_eq(blocks.empty(), true);
 
         // Create a new AST node
         const auto reference = std::make_shared<AST>();

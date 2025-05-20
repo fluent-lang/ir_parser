@@ -34,7 +34,7 @@ namespace fluent::parser
     )
     {
         // Make sure we have a block
-        util::assert(blocks.empty(), false);
+        util::assert_eq(blocks.empty(), false);
 
         // Create a new block node
         const auto block = std::make_shared<parser::AST>();

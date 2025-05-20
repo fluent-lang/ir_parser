@@ -33,7 +33,7 @@ namespace fluent::parser
         // Get the current token
         const auto current = util::try_unwrap(tokens->curr());
 
-        util::assert(current.type, token::Identifier);
+        util::assert_eq(current.type, token::Identifier);
 
         // Create a new AST node
         auto ast = std::make_shared<AST>();

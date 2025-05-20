@@ -31,7 +31,7 @@ namespace fluent::file_code
 
         // Get the children
         const auto children = util::try_unwrap(type->children);
-        util::assert(children.empty(), false);
+        util::assert_eq(children.empty(), false);
 
         // Parse all children
         size_t i = 0;

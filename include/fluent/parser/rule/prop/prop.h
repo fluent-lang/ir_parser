@@ -43,7 +43,7 @@ namespace fluent::parser
 
         // Parse a number literal
         const auto number = util::try_unwrap(tokens->next());
-        util::assert(number.type, token::NumLiteral);
+        util::assert_eq(number.type, token::NumLiteral);
 
         // Create a new number literal node
         const auto literal = std::make_shared<AST>();

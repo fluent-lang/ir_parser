@@ -36,7 +36,7 @@ namespace fluent::parser
     )
     {
         // Make sure we have at least one block
-        util::assert(blocks.empty(), false);
+        util::assert_eq(blocks.empty(), false);
 
         // Create a new ret node
         const auto ret = std::make_shared<parser::AST>();

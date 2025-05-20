@@ -48,7 +48,7 @@ namespace fluent::parser
             condition->rule = NumLiteral;
         } else
         {
-            util::assert(condition_token.type, token::Identifier);
+            util::assert_eq(condition_token.type, token::Identifier);
             condition->rule = Identifier;
         }
 

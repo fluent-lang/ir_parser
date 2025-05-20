@@ -64,7 +64,7 @@ namespace fluent::parser
             {
                 case token::Block:
                 {
-                    util::assert(pivot_fn.has_value(), true);
+                    util::assert_eq(pivot_fn.has_value(), true);
                     parse_block(blocks, stream, pivot_fn.value());
                     pivot = blocks[blocks.size() - 1];
                     break;
@@ -120,56 +120,56 @@ namespace fluent::parser
                 case token::RetVoid:
                 case token::Ret:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_ret(blocks, stream, pivot.value());
                     break;
                 }
 
                 case token::Alloca:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_var(stream, pivot.value(), Alloca, true, false);
                     break;
                 }
 
                 case token::Mov:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_var(stream, pivot.value(), Mov, true, true);
                     break;
                 }
 
                 case token::Store:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_var(stream, pivot.value(), Store, false, true);
                     break;
                 }
 
                 case token::Jump:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_singly_opt(stream, pivot.value(), Jump);
                     break;
                 }
 
                 case token::If:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_if(stream, pivot.value());
                     break;
                 }
 
                 case token::Pick:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_pick(stream, pivot.value());
                     break;
                 }
 
                 default:
                 {
-                    util::assert(pivot.has_value(), true);
+                    util::assert_eq(pivot.has_value(), true);
                     parse_expr(stream, pivot.value(), "default");
                 }
             }
