@@ -22,34 +22,36 @@
 #include <vector>
 #include <memory>
 #include "../../../util/assert.h"
-#include "../identifier/identifier.h"
 #include "../../ast/ast.h"
 #include "../../../lexer/token.h"
 
-inline void parse_block(
-    std::vector<std::shared_ptr<parser::AST>> &blocks,
-    token::TokenStream *tokens,
-    const std::shared_ptr<parser::AST> &ast
-)
+namespace parser
 {
-    // Make sure we have a block
-    util::assert(blocks.empty(), false);
+    inline void parse_block(
+        std::vector<std::shared_ptr<parser::AST>> &blocks,
+        token::TokenStream *tokens,
+        const std::shared_ptr<parser::AST> &ast
+    )
+    {
+        // Make sure we have a block
+        util::assert(blocks.empty(), false);
 
-    // Create a new block node
-    const auto block = std::make_shared<parser::AST>();
-    block->rule = parser::Block;
-    block->value = std::nullopt;
-    block->children = std::make_optional(std::vector<std::shared_ptr<parser::AST>>());
+        // Create a new block node
+        const auto block = std::make_shared<parser::AST>();
+        block->rule = parser::Block;
+        block->value = std::nullopt;
+        block->children = std::make_optional(std::vector<std::shared_ptr<parser::AST>>());
 
-    // Parse the block's name
-    const auto name = parse_identifier(tokens);
-    block->children->push_back(name);
+        // Parse the block's name
+        const auto name = parse_identifier(tokens);
+        block->children->push_back(name);
 
-    // Push the block to the blocks vector
-    blocks.push_back(block);
+        // Push the block to the blocks vector
+        blocks.push_back(block);
 
-    // Push the block to the AST
-    ast->children->push_back(block);
+        // Push the block to the AST
+        ast->children->push_back(block);
+    }
 }
 
 #endif //PARSER_BLOOCK_H
