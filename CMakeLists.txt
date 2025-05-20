@@ -42,6 +42,7 @@ add_library(fluent_parser STATIC
         include/fluent/parser/rule/if/if.h
         include/fluent/parser/rule/block/block.h
         include/fluent/parser/rule/pick/pick.h
+        include/fluent/parser/rule/arithmetic/arithmetic.h
         include/fluent/parser/ast/ast.h
 )
 
