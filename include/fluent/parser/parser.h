@@ -23,7 +23,6 @@
 #include <optional>
 #include <vector>
 
-#include "../file_code/file_code.h"
 #include "../lexer/lexer.h"
 #include "rule/binary/binary.h"
 #include "rule/block/block.h"
@@ -42,7 +41,7 @@
 
 namespace fluent::parser
 {
-    inline file_code::FileCode parse_code(const std::string &code)
+    inline std::shared_ptr<AST> parse_code(const std::string &code)
     {
         // Tokenize the code
         token::TokenStream stream = lexer::tokenize(code);
@@ -184,7 +183,7 @@ namespace fluent::parser
         }
 
         // Convert the AST to a FileCode
-        return file_code::convert_code(ast);
+        return ast;
     }
 }
 
