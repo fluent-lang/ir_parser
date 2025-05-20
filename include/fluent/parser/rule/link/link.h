@@ -28,7 +28,11 @@
 
 namespace parser
 {
-    inline void parse_link(const std::vector<std::shared_ptr<parser::AST>> &blocks, token::TokenStream *tokens)
+    inline void parse_link(
+        const std::vector<std::shared_ptr<AST>> &blocks,
+        token::TokenStream *tokens,
+        const std::shared_ptr<AST> &ast
+    )
     {
         // Ensure we don't have any blocks
         util::assert(blocks.empty(), true);
@@ -37,7 +41,16 @@ namespace parser
         const auto token = util::try_unwrap(tokens->next());
         util::assert(token.type, token::StringLiteral);
 
-        // Do nothing since link is not relevant for interpretation
+        // Create a new literal node
+        const auto literal = create_node(StringLiteral);
+        literal->value = token.value;
+
+        // Create a new AST node
+        const auto node = create_node(Link);
+        node->children->push_back(literal);
+
+        // Add the node to the result
+        ast->children->push_back(node);
     }
 }
 

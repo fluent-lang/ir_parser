@@ -105,7 +105,7 @@ namespace parser
 
                 case token::Link:
                 {
-                    parse_link(blocks, stream);
+                    parse_link(blocks, stream, ast);
                     break;
                 }
 
