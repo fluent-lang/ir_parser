@@ -23,7 +23,7 @@
 namespace fluent::util
 {
     template <typename T>
-    void assert(T a, T b)
+    void assert_eq(T a, T b)
     {
         if (a != b)
         {
