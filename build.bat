@@ -16,4 +16,4 @@ if not exist "cmake-build-debug" (
     cmake -B cmake-build-debug -S . -G "Ninja"
 )
 
-cmake --build cmake-build-debug --target fluenti -j 14
+cmake --build cmake-build-debug --target fluent_parser -j 14

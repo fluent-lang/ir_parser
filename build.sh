@@ -15,4 +15,4 @@ if [ ! -d "cmake-build-debug" ]; then
     cmake -B cmake-build-debug -S . -G "Ninja"
 fi
 
-cmake --build cmake-build-debug --target fluenti -j 14
+cmake --build cmake-build-debug --target fluent_parser -j 14
