@@ -44,6 +44,17 @@ add_library(fluent_parser STATIC
         include/fluent/parser/rule/pick/pick.h
         include/fluent/parser/rule/arithmetic/arithmetic.h
         include/fluent/parser/ast/ast.h
+        include/fluent/file_code/file_code.h
+        include/fluent/file_code/type/type_wrapper.h
+        include/fluent/file_code/structure/mod/mod.h
+        include/fluent/file_code/rule/ref/ref.h
+        include/fluent/file_code/rule/type/type.h
+        include/fluent/file_code/structure/ref/ref.h
+        include/fluent/file_code/structure/function/function.h
+        include/fluent/file_code/rule/function/function.h
+        include/fluent/file_code/rule/mod/mod.h
+        include/fluent/file_code/converter.h
+        include/fluent/file_code/rule/link/link.h
 )
 
 target_include_directories(fluent_parser PRIVATE ${CMAKE_BINARY_DIR}/_deps/unordered_dense-src/include)

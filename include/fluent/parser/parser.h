@@ -23,6 +23,7 @@
 #include <optional>
 #include <vector>
 
+#include "../file_code/file_code.h"
 #include "../lexer/lexer.h"
 #include "rule/binary/binary.h"
 #include "rule/block/block.h"
@@ -41,13 +42,13 @@
 
 namespace fluent::parser
 {
-    inline std::shared_ptr<AST> parse_code(const std::string &code)
+    inline file_code::FileCode parse_code(const std::string &code)
     {
         // Tokenize the code
         token::TokenStream stream = lexer::tokenize(code);
         
         // Create a new AST node
-        auto ast = std::make_shared<AST>();
+        const auto ast = std::make_shared<AST>();
         ast->rule = Program;
         ast->children = std::make_optional(std::vector<std::shared_ptr<AST>>());
 
@@ -182,7 +183,8 @@ namespace fluent::parser
             current_opt = stream.next();
         }
 
-        return ast;
+        // Convert the AST to a FileCode
+        return file_code::convert_code(ast);
     }
 }
 
