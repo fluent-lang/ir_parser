@@ -1,0 +1,6 @@
+#ifndef FLUENT_PARSER_LIBRARY_H
+#define FLUENT_PARSER_LIBRARY_H
+
+void hello();
+
+#endif //FLUENT_PARSER_LIBRARY_H
