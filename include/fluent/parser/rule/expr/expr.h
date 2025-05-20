@@ -29,7 +29,8 @@
 #include "../../../lexer/token.h"
 #include "../../ast/ast.h"
 
-namespace parser::expr {
+namespace parser::expr
+{
     inline void parse_single_token(
         const token::Token &current,
         const std::shared_ptr<AST> &ast,
