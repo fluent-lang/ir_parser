@@ -177,7 +177,7 @@ namespace fluent::token
                     value.has_value()
                 )
                 {
-                    // Get the ImmutStr
+                    // Get the string
                     const auto str = value.value();
 
                     // Destroy the str

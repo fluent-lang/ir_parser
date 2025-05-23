@@ -21,16 +21,15 @@
 #include <ankerl/unordered_dense.h>
 
 #include "../../../parser/parser.h"
-#include "../../../structure/immut_str/immut_str.h"
 #include "../../type/type_wrapper.h"
 
 namespace fluent::file_code
 {
     typedef struct
     {
-        ankerl::unordered_dense::map<std::string_view, Type, ImmutStrHash, ImmutStrEqual> params;
+        ankerl::unordered_dense::map<std::string_view, Type> params;
         std::shared_ptr<parser::AST> body;
-        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<parser::AST>, ImmutStrHash, ImmutStrEqual> blocks;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<parser::AST>> blocks;
         Type return_type;
     } Function;
 }

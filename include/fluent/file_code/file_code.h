@@ -20,7 +20,6 @@
 #define FILE_CODE_H
 #include <memory>
 #include <ankerl/unordered_dense.h>
-#include "../structure/immut_str/immut_str.h"
 #include "structure/function/function.h"
 #include "structure/mod/mod.h"
 #include "structure/ref/ref.h"
@@ -29,9 +28,9 @@ namespace fluent::file_code
 {
     typedef struct
     {
-        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Reference>, ImmutStrHash, ImmutStrEqual> refs;
-        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Function>, ImmutStrHash, ImmutStrEqual> functions;
-        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Mod>, ImmutStrHash, ImmutStrEqual> mods;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Reference>> refs;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Function>> functions;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Mod>> mods;
         std::vector<std::string_view> links;
     } FileCode;
 }

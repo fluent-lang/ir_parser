@@ -23,7 +23,6 @@ add_library(fluent_parser STATIC
         library.cpp
         include/fluent/lexer/lexer.h
         include/fluent/lexer/token.h
-        include/fluent/structure/immut_str/immut_str.h
         include/fluent/util/unwrap.h
         include/fluent/util/assert.h
         include/fluent/parser/parser.h
