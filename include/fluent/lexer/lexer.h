@@ -76,11 +76,11 @@ namespace fluent::lexer
         {"bool", token::Boolean},
     };
 
-    inline ImmutStr *convert_value(const StringBuilder &current)
+    inline std::string_view convert_value(const StringBuilder &current)
     {
         // Assign the value only when needed
-        char *str = collect_string_builder(&current);
-        return new ImmutStr(str, current.idx);
+        const char *str = collect_string_builder(&current);
+        return std::string_view(str, current.idx); // Deleted later by TokenStream
     }
 
     inline void push_token(

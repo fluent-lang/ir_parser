@@ -22,7 +22,6 @@
 #include <memory>
 #include <optional>
 #include <vector>
-#include "../../structure/immut_str/immut_str.h"
 
 namespace fluent::parser
 {
@@ -80,7 +79,7 @@ namespace fluent::parser
     {
         Rule rule = Program;
         std::optional<std::vector<std::shared_ptr<AST>>> children;
-        std::optional<ImmutStr *> value;
+        std::optional<std::string_view> value;
     } AST;
 
     inline std::shared_ptr<AST> create_node(const Rule rule)

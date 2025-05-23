@@ -29,10 +29,10 @@ namespace fluent::file_code
 {
     typedef struct
     {
-        ankerl::unordered_dense::map<ImmutStr *, std::shared_ptr<Reference>, ImmutStrHash, ImmutStrEqual> refs;
-        ankerl::unordered_dense::map<ImmutStr *, std::shared_ptr<Function>, ImmutStrHash, ImmutStrEqual> functions;
-        ankerl::unordered_dense::map<ImmutStr *, std::shared_ptr<Mod>, ImmutStrHash, ImmutStrEqual> mods;
-        std::vector<ImmutStr *> links;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Reference>, ImmutStrHash, ImmutStrEqual> refs;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Function>, ImmutStrHash, ImmutStrEqual> functions;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<Mod>, ImmutStrHash, ImmutStrEqual> mods;
+        std::vector<std::string_view> links;
     } FileCode;
 }
 

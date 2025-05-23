@@ -22,8 +22,6 @@
 #include <cstddef>
 #include <optional>
 
-#include "../../structure/immut_str/immut_str.h"
-
 namespace fluent::file_code
 {
     typedef enum
@@ -38,7 +36,7 @@ namespace fluent::file_code
     {
         size_t pointers = 0;
         size_t arrays = 0;
-        std::optional<ImmutStr *> base_type = std::nullopt;
+        std::optional<std::string_view> base_type = std::nullopt;
         std::optional<PrimitiveType> primitive = std::make_optional(Nothing);
     } Type;
 }

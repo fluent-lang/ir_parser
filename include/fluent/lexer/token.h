@@ -22,7 +22,6 @@
 #include <optional>
 #include <cstddef>
 #include <vector>
-#include "../structure/immut_str/immut_str.h"
 
 namespace fluent::token
 {
@@ -83,7 +82,7 @@ namespace fluent::token
     typedef struct
     {
         TokenType type = Unknown;
-        std::optional<ImmutStr *> value;
+        std::optional<std::string_view> value;
         size_t line = 0;
         size_t col = 0;
     } Token;
@@ -182,7 +181,7 @@ namespace fluent::token
                     const auto str = value.value();
 
                     // Destroy the str
-                    delete str;
+                    free(const_cast<char *>(str.data()));
                 }
 
                 // Get the next token

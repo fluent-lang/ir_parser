@@ -28,9 +28,9 @@ namespace fluent::file_code
 {
     typedef struct
     {
-        ankerl::unordered_dense::map<ImmutStr *, Type, ImmutStrHash, ImmutStrEqual> params;
+        ankerl::unordered_dense::map<std::string_view, Type, ImmutStrHash, ImmutStrEqual> params;
         std::shared_ptr<parser::AST> body;
-        ankerl::unordered_dense::map<ImmutStr *, std::shared_ptr<parser::AST>, ImmutStrHash, ImmutStrEqual> blocks;
+        ankerl::unordered_dense::map<std::string_view, std::shared_ptr<parser::AST>, ImmutStrHash, ImmutStrEqual> blocks;
         Type return_type;
     } Function;
 }
