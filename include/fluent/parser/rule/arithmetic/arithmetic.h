@@ -41,8 +41,6 @@ namespace fluent::parser
         // Parse the identifier
         node->children->push_back(parse_identifier(tokens));
 
-        // Get the next token
-
         // Parse allowed types
         switch (
             const auto next = util::try_unwrap(tokens->next());
