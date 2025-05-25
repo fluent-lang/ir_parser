@@ -66,13 +66,12 @@ namespace fluent::parser
         ModEl, // 37
         Prop, // 38
         Array, // 39
-        Expression, // 40
-        Pointer, // 41
-        ArrayType, // 42
-        Type, // 43
-        Parameters, // 44
-        Not, // 45
-        Construct, // 46
+        Pointer, // 40
+        ArrayType, // 41
+        Type, // 42
+        Parameters, // 43
+        Not, // 44
+        Construct, // 45
     } Rule;
 
     typedef struct AST

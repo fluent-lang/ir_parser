@@ -56,12 +56,6 @@ namespace fluent::parser
         const char *trace
     )
     {
-        // Create a new expression node
-        const auto expr = std::make_shared<AST>();
-        expr->rule = Expression;
-        expr->value = std::nullopt;
-        expr->children = std::make_optional(std::vector<std::shared_ptr<AST>>());
-
         // Get the next token
         switch (
             const token::Token next = util::try_unwrap(tokens->curr());
@@ -91,109 +85,109 @@ namespace fluent::parser
                 const std::shared_ptr<AST> id = parse_identifier_cur(tokens);
 
                 // Add the identifier to the expression node
-                expr->children->push_back(id);
+                ast->children->push_back(id);
                 break;
             }
 
             case token::Call:
             {
-                parse_ranged_op(tokens, expr, false, false);
+                parse_ranged_op(tokens, ast, false, false);
                 break;
             }
 
             case token::Construct:
             {
-                parse_ranged_op(tokens, expr, true, false);
+                parse_ranged_op(tokens, ast, true, false);
                 break;
             }
 
             case token::Array:
             {
-                parse_ranged_op(tokens, expr, false, true);
+                parse_ranged_op(tokens, ast, false, true);
                 break;
             }
 
             case token::Property:
             {
-                parse_prop(tokens, expr);
+                parse_prop(tokens, ast);
                 break;
             }
 
             case token::Add:
             {
-                parse_arithmetic_op(tokens, expr, Add);
+                parse_arithmetic_op(tokens, ast, Add);
                 break;
             }
 
             case token::Sub:
             {
-                parse_arithmetic_op(tokens, expr, Sub);
+                parse_arithmetic_op(tokens, ast, Sub);
                 break;
             }
 
             case token::Mul:
             {
-                parse_arithmetic_op(tokens, expr, Mul);
+                parse_arithmetic_op(tokens, ast, Mul);
                 break;
             }
 
             case token::Div:
             {
-                parse_arithmetic_op(tokens, expr, Div);
+                parse_arithmetic_op(tokens, ast, Div);
                 break;
             }
 
             case token::Take:
             {
-                parse_singly_opt(tokens, expr, Take);
+                parse_singly_opt(tokens, ast, Take);
                 break;
             }
 
             case token::Address:
             {
-                parse_singly_opt(tokens, expr, Addr);
+                parse_singly_opt(tokens, ast, Addr);
                 break;
             }
 
             case token::Eq:
             {
-                parse_binary_opt(tokens, expr, Eq);
+                parse_binary_opt(tokens, ast, Eq);
                 break;
             }
 
             case token::Ne:
             {
-                parse_binary_opt(tokens, expr, Ne);
+                parse_binary_opt(tokens, ast, Ne);
                 break;
             }
 
             case token::Not:
             {
-                parse_binary_opt(tokens, expr, Not);
+                parse_binary_opt(tokens, ast, Not);
                 break;
             }
 
             case token::Gt:
             {
-                parse_binary_opt(tokens, expr, Gt);
+                parse_binary_opt(tokens, ast, Gt);
                 break;
             }
 
             case token::Lt:
             {
-                parse_binary_opt(tokens, expr, Lt);
+                parse_binary_opt(tokens, ast, Lt);
                 break;
             }
 
             case token::Ge:
             {
-                parse_binary_opt(tokens, expr, Ge);
+                parse_binary_opt(tokens, ast, Ge);
                 break;
             }
 
             case token::Le:
             {
-                parse_binary_opt(tokens, expr, Le);
+                parse_binary_opt(tokens, ast, Le);
                 break;
             }
 
@@ -203,9 +197,6 @@ namespace fluent::parser
                 throw std::runtime_error("Invalid IR structure (expr)");
             }
         }
-
-        // Add the expression node to the AST
-        ast->children->push_back(expr);
     }
 }
 
