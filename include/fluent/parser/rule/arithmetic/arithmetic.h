@@ -27,10 +27,10 @@
 namespace fluent::parser
 {
     inline void parse_arithmetic_op(
-    token::TokenStream *tokens,
-    const std::shared_ptr<AST> &ast,
-    const Rule rule
-)
+        token::TokenStream *tokens,
+        const std::shared_ptr<AST> &ast,
+        const Rule rule
+    )
     {
         // Create a new AST node
         const auto node = std::make_shared<AST>();
