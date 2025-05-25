@@ -191,6 +191,18 @@ namespace fluent::parser
                 break;
             }
 
+            case token::Or:
+            {
+                parse_binary_opt(tokens, ast, Or);
+                break;
+            }
+
+            case token::And:
+            {
+                parse_binary_opt(tokens, ast, And);
+                break;
+            }
+
             default:
             {
                 puts(trace);
