@@ -71,7 +71,9 @@ namespace fluent::parser
         Type, // 42
         Parameters, // 43
         Not, // 44
-        Construct, // 45
+        Or, // 45
+        And, // 46
+        Construct, // 47
     } Rule;
 
     typedef struct AST
