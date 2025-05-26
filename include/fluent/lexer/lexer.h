@@ -21,7 +21,7 @@
 
 #include "token.h"
 #include <ankerl/unordered_dense.h>
-#include <fluent/string_builder/library.h>
+#include <fluent/string_builder/string_builder.h>
 #include <string>
 
 namespace fluent::lexer
