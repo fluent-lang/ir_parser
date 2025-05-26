@@ -41,6 +41,32 @@ namespace fluent::parser
         ast->children->push_back(node);
     }
 
+    inline bool process_possible_num(
+        token::TokenStream *tokens,
+        const std::shared_ptr<AST> &node
+    )
+    {
+        // Check if we have integer literals
+        if (tokens->peek()->type == token::NumLiteral)
+        {
+            // Get the next token
+            const auto next = util::try_unwrap(tokens->next());
+            util::assert_eq(next.type, token::NumLiteral);
+
+            // Create a new literal node
+            const auto literal = std::make_shared<AST>();
+            literal->rule = NumLiteral;
+            literal->value = next.value;
+            literal->children = std::nullopt;
+
+            // Add the literal node to the AST
+            node->children->push_back(literal);
+            return true;
+        }
+
+        return false;
+    }
+
     inline void parse_binary_opt(
         token::TokenStream *tokens,
         const std::shared_ptr<AST> &ast,
@@ -50,9 +76,16 @@ namespace fluent::parser
         // Create a new AST node
         const std::shared_ptr<AST> node = create_node(rule);
 
-        // Parse two identifiers for the operands
-        node->children->push_back(parse_identifier(tokens));
-        node->children->push_back(parse_identifier(tokens));
+        // Parse 2 operands for the binary operation
+        for (int i = 0; i < 2; ++i)
+        {
+            // Check if we have integer literals
+            if (!process_possible_num(tokens, node))
+            {
+                // Parse an identifier for the operand
+                node->children->push_back(parse_identifier(tokens));
+            }
+        }
 
         // Add the binary node to the AST
         ast->children->push_back(node);
