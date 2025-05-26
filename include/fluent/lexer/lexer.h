@@ -52,7 +52,6 @@ namespace fluent::lexer
         {"jump", token::Jump},
         {"store", token::Store},
         {"prop", token::Property},
-        {"pick", token::Pick},
         {"or", token::Or},
         {"and", token::And},
         {"add", token::Add},
@@ -73,7 +72,7 @@ namespace fluent::lexer
         {"end", token::End},
         {"co", token::Construct},
         {"[]", token::ArrayType},
-        {"bool", token::Boolean},
+        {"bool", token::Bool},
     };
 
     inline std::string_view convert_value(const StringBuilder &current)

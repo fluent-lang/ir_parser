@@ -30,7 +30,6 @@
 #include "rule/if/if.h"
 #include "rule/link/link.h"
 #include "rule/module/module.h"
-#include "rule/pick/pick.h"
 #include "rule/reference/reference.h"
 #include "rule/ret/ret.h"
 #include "rule/var/var.h"
@@ -157,13 +156,6 @@ namespace fluent::parser
                 {
                     util::assert_eq(pivot.has_value(), true);
                     parse_if(stream, pivot.value());
-                    break;
-                }
-
-                case token::Pick:
-                {
-                    util::assert_eq(pivot.has_value(), true);
-                    parse_pick(stream, pivot.value());
                     break;
                 }
 

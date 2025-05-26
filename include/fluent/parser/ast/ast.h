@@ -74,6 +74,7 @@ namespace fluent::parser
         Or, // 45
         And, // 46
         Construct, // 47
+        Boolean, // 48
     } Rule;
 
     typedef struct AST

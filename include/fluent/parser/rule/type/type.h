@@ -59,7 +59,6 @@ namespace fluent::parser
         // Create a new AST node for the type
         const auto type_node = std::make_shared<AST>();
         type_node->children = std::nullopt;
-        type_node->value = std::nullopt;
 
         // Parse the raw type
         switch (token.type)
@@ -76,7 +75,12 @@ namespace fluent::parser
                 break;
             }
 
-            case token::Boolean:
+            case token::Bool:
+            {
+                type_node->rule = Boolean;
+                break;
+            }
+
             case token::Number:
             {
                 type_node->rule = Number;
@@ -91,8 +95,8 @@ namespace fluent::parser
 
             case token::Identifier:
             {
-                type_node->rule = Identifier;
                 type_node->value = token.value;
+                type_node->rule = Identifier;
                 break;
             }
 

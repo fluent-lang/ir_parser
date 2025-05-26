@@ -52,7 +52,7 @@ namespace fluent::token
         Store, // 22
         Mov, // 23
         Property, // 24
-        Pick, // 25
+        Bool, // 25
         Or, // 26
         And, // 27
         Add, // 28
@@ -75,7 +75,6 @@ namespace fluent::token
         DecLiteral, // 45
         Identifier, // 46
         ArrayType, // 47
-        Boolean, // 48
         Unknown, // 49
     } TokenType;
 
