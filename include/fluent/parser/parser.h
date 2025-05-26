@@ -85,7 +85,8 @@ namespace fluent::parser
                 case token::End:
                 {
                     // Delete the last block
-                    if (!blocks.empty()) {
+                    if (!blocks.empty())
+                    {
                         blocks.pop_back();
 
                         if (!blocks.empty())
