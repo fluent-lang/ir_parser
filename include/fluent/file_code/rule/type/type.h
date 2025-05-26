@@ -66,6 +66,10 @@ namespace fluent::file_code
         {
             result.primitive = String;
         }
+        else if (curr->rule == parser::Boolean)
+        {
+            result.primitive = Bool;
+        }
 
         // Parse array types
         while (i < max && children[i]->rule == parser::ArrayType)

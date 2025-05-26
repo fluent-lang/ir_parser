@@ -30,6 +30,7 @@ namespace fluent::file_code
         Num,
         Dec,
         String,
+        Bool,
     } PrimitiveType;
 
     typedef struct
