@@ -75,7 +75,7 @@ namespace fluent::lexer
         {"bool", token::Bool},
     };
 
-    inline std::string_view convert_value(const StringBuilder &current)
+    inline std::string_view convert_value(const string_builder_t &current)
     {
         // Assign the value only when needed
         const char *str = collect_string_builder(&current);
@@ -84,7 +84,7 @@ namespace fluent::lexer
 
     inline void push_token(
         std::vector<token::Token> &result,
-        StringBuilder &current,
+        string_builder_t &current,
         bool &is_string,
         bool &is_num,
         bool &is_dec,
@@ -164,7 +164,7 @@ namespace fluent::lexer
         std::vector<token::Token> result;
 
         // Create a new string builder
-        StringBuilder current;
+        string_builder_t current;
         init_string_builder(&current, 120);
 
         // Define col/line counters
